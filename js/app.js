@@ -61,6 +61,7 @@ let indexIDS = [];
 let indexMatched = [];
 let move =0;
 const MoveCounter = document.querySelector(".moves");
+const UlStars = document.querySelector(".stars");
 
 
 for(let i = 0;i<chosenLi.length;i++){
@@ -94,11 +95,45 @@ for(let i = 0;i<chosenLi.length;i++){
                 	});
         		}
 
+                // stars
+                
+                
+                
              
 
                 // Winning
 
                 if (indexMatched.length == 16){
+                    if(move < 40 && move >=30){
+                        console.log("move < 40 && move >=30");
+                    for (var z = 0; z < 2; z++) {
+                        let CreateStar = document.createElement("li");
+                        let starTextToAdd = `<i class="fa fa-star"></i>`
+                        CreateStar.insertAdjacentHTML('afterbegin', starTextToAdd);
+                        UlStars.appendChild(CreateStar);
+                    }
+
+                } else if (move < 30 && move >=20){
+                    console.log("move < 30 && move >=20");
+
+                    for (var r = 0; r < 3; r++) {
+                        let CreateStar = document.createElement("li");
+                        let starTextToAdd = `<i class="fa fa-star"></i>`
+                        CreateStar.insertAdjacentHTML('afterbegin', starTextToAdd);
+                        UlStars.appendChild(CreateStar);
+                    }
+
+                } else if (move < 20){
+                    console.log("move < 20");
+
+                    for (var y = 0; y < 4; y++) {
+                        let CreateStar = document.createElement("li");
+                        let starTextToAdd = `<i class="fa fa-star"></i>`
+                        CreateStar.insertAdjacentHTML('afterbegin', starTextToAdd);
+                        UlStars.appendChild(CreateStar);
+                    }
+
+                }
                     alert("Congatulations Your Score Is " + move + " Moves");
                 }
 
@@ -128,6 +163,7 @@ document.querySelector(".restart").addEventListener("click", function(){
     indexMatched = [];
     move = 0;
     MoveCounter.textContent= move;
+    UlStars.innerHTML='';
 
     for(let i = 0;i<chosenLi.length;i++){
         chosenLi[i].classList.remove('open','show','match')
