@@ -59,15 +59,14 @@ let chosenLi = document.getElementsByClassName("card");
 let openCard = [];
 let indexIDS = [];
 let indexMatched = [];
-
+let move =0;
+const MoveCounter = document.querySelector(".moves");
 
 for(let i = 0;i<chosenLi.length;i++){
     chosenLi[i].addEventListener("click", function showSympol(){
-        console.log('openCards:', openCard);
-        console.log('IDs:', indexIDS);
+
 
     	if (!indexIDS.includes(i) && !indexMatched.includes(i)){
-    		console.log('NOT IN ARRAY');
     		let cName = chosenLi[i].querySelector("i").className;
             let currentEl = chosenLi[i];
 
@@ -77,13 +76,14 @@ for(let i = 0;i<chosenLi.length;i++){
         		chosenLi[i].classList.add('open', 'show');
                 openCard.push({cn:cName, id:i});
                 indexIDS.push(i);
-                console.log(openCard);
-        		console.log('LESS THAN 3');
+                move++ ;
+                console.log("moves :", move);
+                MoveCounter.textContent= move;
+
 
         		//Matching
         		if( (indexIDS.length === 2) && (openCard[0].cn === openCard[1].cn) ){
         			openCard.forEach( function (e){
-	                	// console.log(e)
 	                   chosenLi[e.id].classList.remove('open', 'show'); 
 	                   chosenLi[e.id].classList.add('match');
 	                   indexMatched.push(i);
@@ -91,12 +91,10 @@ for(let i = 0;i<chosenLi.length;i++){
 	                   indexIDS = [];
                 	});
         		}
-
+        		
             } else {
-            	console.log(indexIDS.length);
-            	console.log('Greater THAN 3');
+
             	indexIDS.forEach( function (e){
-                	// console.log(e)
                    chosenLi[e].classList.remove('open', 'show'); 
                    openCard = [];
                    indexIDS = [];
@@ -105,8 +103,10 @@ for(let i = 0;i<chosenLi.length;i++){
 
 
     	} else {
-    		console.log('IN ARRAY');
+    		alert ("Congatulations Your Score " + move + "Moves");
     	}
 	});
 }
+
+
 
