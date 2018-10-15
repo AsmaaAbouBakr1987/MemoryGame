@@ -120,5 +120,19 @@ for(let i = 0;i<chosenLi.length;i++){
 	});
 }
 
+// restart icon
 
+document.querySelector(".restart").addEventListener("click", function(){
+    openCard = [];
+    indexIDS = [];
+    indexMatched = [];
+    move = 0;
+    MoveCounter.textContent= move;
+
+    for(let i = 0;i<chosenLi.length;i++){
+        chosenLi[i].classList.remove('open','show','match')
+
+    }
+    
+}, true);
 
