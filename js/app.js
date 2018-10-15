@@ -62,6 +62,7 @@ let indexMatched = [];
 let move =0;
 const MoveCounter = document.querySelector(".moves");
 
+
 for(let i = 0;i<chosenLi.length;i++){
     chosenLi[i].addEventListener("click", function showSympol(){
 
@@ -89,8 +90,19 @@ for(let i = 0;i<chosenLi.length;i++){
 	                   indexMatched.push(i);
 	                   openCard = [];
 	                   indexIDS = [];
+                       console.log("matched :" ,indexMatched.length);
                 	});
         		}
+
+             
+
+                // Winning
+
+                if (indexMatched.length == 16){
+                    alert("Congatulations Your Score Is " + move + " Moves");
+                }
+
+
         		
             } else {
 
@@ -103,7 +115,7 @@ for(let i = 0;i<chosenLi.length;i++){
 
 
     	} else {
-    		alert ("Congatulations Your Score " + move + "Moves");
+
     	}
 	});
 }
